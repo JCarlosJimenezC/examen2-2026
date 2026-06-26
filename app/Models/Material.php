@@ -19,4 +19,9 @@ class Material extends Model
     {
         return $this->belongsTo(Categoria::class, 'idCategoria', 'idCategoria');
     }
+
+    public function materialesUnidad()
+    {
+        return $this->hasMany(MaterialUnidad::class, 'codigoMaterial', 'codigo');
+    }
 }

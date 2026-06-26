@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('presupuestos', function (Blueprint $table) {
-            $table->id('codigoPresupuesto'); // Llave primaria según el UML
+            $table->increments('codigoPresupuesto');
             $table->string('nombrePresupuesto');
-
-            // Llave foránea hacia la tabla Unidad (que hará el equipo 2)
-            $table->unsignedBigInteger('idUnidad');
-            $table->foreign('idUnidad')->references('idUnidad')->on('unidads')->onDelete('cascade');
+            $table->unsignedInteger('idUnidad');
+            $table->foreign('idUnidad')->references('idUnidad')->on('unidades')->onDelete('cascade');
 
             $table->timestamps();
         });
